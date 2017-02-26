@@ -1,0 +1,11 @@
+main.o: main.c //only объектный файл .o
+	gcc -c main.c
+
+mylib.o: mylib/mylib.c
+	gcc -c mylib/mylib.c
+
+hello: main.o mylib/mylib.o // цель
+	gcc -o hello main.o mylib/mylib.o
+	rm -rf *.o mylib/*.o // рекрсивная проверка во всех файлах и дерикториях
+
+all: hello // команда запуска makefile
